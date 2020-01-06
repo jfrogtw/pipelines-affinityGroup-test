@@ -1,0 +1,23 @@
+		
+pipelines:
+  - name: pipeline_affinityGroup_test
+    configuration:
+      environmentVariables:
+        readOnly:
+          MY_MESSAGE: '"Hello World!"'
+    steps:
+      - name: step_1
+        type: Bash
+        configuration:
+            affinityGroup: together
+        execution:
+          onExecute:
+            - echo "Running " $pipeline_name "|" $step_name >myoutput.txt
+            - echo $MY_MESSAGE >>myoutput.txt
+      - name: step_2
+        type: Bash
+        configuration:
+            affinityGroup: together
+        execution:
+          onExecute:
+            - cat myoutput.txt
