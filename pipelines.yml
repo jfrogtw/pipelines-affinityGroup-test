@@ -18,7 +18,7 @@ pipelines:
         configuration:
           affinityGroup: together
           inputSteps:
-             -name: ag_step_1
+             - name: ag_step_1
         execution:
           onExecute:
             - cat myoutput.txt
