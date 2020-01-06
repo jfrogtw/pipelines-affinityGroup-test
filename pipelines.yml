@@ -4,7 +4,6 @@ pipelines:
       environmentVariables:
         readOnly:
           MY_DIR: "../.."
-          MY_MESSAGE: '"Hello World!"'
     steps:
       - name: ag_step_1
         type: Bash
@@ -13,8 +12,6 @@ pipelines:
         execution:
           onExecute:
             - echo "Running " $pipeline_name "|" $step_name >$MY_DIR/myoutput.txt
-            - echo $MY_MESSAGE >>$MY_DIR/myoutput.txt
-            - pwd
             - cat $MY_DIR/myoutput.txt
       - name: ag_step_2
         type: Bash
@@ -24,5 +21,4 @@ pipelines:
              - name: ag_step_1
         execution:
           onExecute:
-            - pwd
             - cat $MY_DIR/myoutput.txt
