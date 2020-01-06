@@ -1,4 +1,3 @@
-		
 pipelines:
   - name: pipeline_affinityGroup_test
     configuration:
