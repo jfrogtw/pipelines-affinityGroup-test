@@ -13,7 +13,8 @@ pipelines:
           onExecute:
             - echo "Running " $pipeline_name "|" $step_name >myoutput.txt
             - echo $MY_MESSAGE >>myoutput.txt
-      - name: step_2
+            - cat myoutput.txt
+      - name: ag_step_2
         type: Bash
         configuration:
           affinityGroup: together
