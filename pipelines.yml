@@ -8,7 +8,7 @@ pipelines:
       - name: ag_step_1
         type: Bash
         configuration:
-            affinityGroup: together
+          affinityGroup: together
         execution:
           onExecute:
             - echo "Running " $pipeline_name "|" $step_name >myoutput.txt
@@ -16,7 +16,7 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
-            affinityGroup: together
+          affinityGroup: together
           inputSteps:
              -name: ag_step_1
         execution:
