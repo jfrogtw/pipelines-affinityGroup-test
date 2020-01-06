@@ -15,6 +15,7 @@ pipelines:
           onExecute:
             - echo "Running " $pipeline_name "|" $step_name >myoutput.txt
             - echo $MY_MESSAGE >>myoutput.txt
+            - pwd
             - cat myoutput.txt
       - name: ag_step_2
         type: Bash
@@ -26,4 +27,5 @@ pipelines:
              - name: ag_step_1
         execution:
           onExecute:
+            - pwd
             - cat myoutput.txt
