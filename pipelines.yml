@@ -3,6 +3,7 @@ pipelines:
     configuration:
       environmentVariables:
         readOnly:
+          MY_DIR: "../.."
           MY_MESSAGE: '"Hello World!"'
     steps:
       - name: ag_step_1
@@ -13,10 +14,10 @@ pipelines:
           affinityGroup: together
         execution:
           onExecute:
-            - echo "Running " $pipeline_name "|" $step_name >../../myoutput.txt
-            - echo $MY_MESSAGE >>../../myoutput.txt
+            - echo "Running " $pipeline_name "|" $step_name >$MY_DIR/myoutput.txt
+            - echo $MY_MESSAGE >>$MY_DIR/myoutput.txt
             - pwd
-            - cat ../../myoutput.txt
+            - cat $MY_DIR/myoutput.txt
       - name: ag_step_2
         type: Bash
         configuration:
@@ -28,4 +29,4 @@ pipelines:
         execution:
           onExecute:
             - pwd
-            - cat ../../myoutput.txt
+            - cat $MY_DIR/myoutput.txt
