@@ -9,8 +9,6 @@ pipelines:
       - name: ag_step_1
         type: Bash
         configuration:
-          runtime:
-            type: host        
           affinityGroup: together
         execution:
           onExecute:
@@ -21,8 +19,6 @@ pipelines:
       - name: ag_step_2
         type: Bash
         configuration:
-          runtime:
-            type: host        
           affinityGroup: together
           inputSteps:
              - name: ag_step_1
