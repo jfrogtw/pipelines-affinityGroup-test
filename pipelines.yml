@@ -5,7 +5,7 @@ pipelines:
         readOnly:
           MY_MESSAGE: '"Hello World!"'
     steps:
-      - name: step_1
+      - name: ag_step_1
         type: Bash
         configuration:
             affinityGroup: together
@@ -17,6 +17,8 @@ pipelines:
         type: Bash
         configuration:
             affinityGroup: together
+          inputSteps:
+             -name: ag_step_1
         execution:
           onExecute:
             - cat myoutput.txt
